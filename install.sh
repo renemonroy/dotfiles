@@ -43,7 +43,7 @@ git clone https://github.com/powerline/fonts.git ~/Development/fonts
 cd ~/Development/fonts
 ./install.sh
 cd ..
-rm -rf fonts
+rm -rf ./fonts
 
 echo '[4.1/1-] Installing vscode...'
 brew cask install visual-studio-code
