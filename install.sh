@@ -8,6 +8,19 @@ echo '[2/10] Installing git...'
 brew update
 brew upgrade
 brew install git
+mkdir -p ~/Development
+git clone https://gitlab.com/renemn/dotfiles.git ~/Development/dotfiles
+cd ~/Development/dotfiles
+DOTFILES_PATH=$(pwd)
+ln -sf $DOTFILES_PATH/git/.gitconfig ~/.gitconfig
+ln -sf $DOTFILES_PATH/git/.gitignore_global ~/.gitignore_global
+
+echo '[3/10] Installing zsh...'
+brew install zsh
+grep -q -f $(which zsh) /etc/shells || echo $(which zsh) | sudo tee -a /etc/shells
+chsh -s $(which zsh)
+
+echo '[4/10] Installing node'
 
 echo '[3/10] Installing silver searcher (ag)...'
 brew install the_silver_searcher
@@ -15,23 +28,16 @@ brew install the_silver_searcher
 echo '[4/10] Installing fzy...'
 brew install fzy
 
-echo '[2.4/5] Installing zsh...'
-brew install zsh
-grep -q -f $(which zsh) /etc/shells || echo $(which zsh) | sudo tee -a /etc/shells
-chsh -s $(which zsh)
-
-echo '[4/5] Installing common apps...'
-brew update
-brew upgrade
-
-echo '[4.1/5] Installing hyper...'
+echo '[4.1/10] Installing hyper...'
 brew cask install hyper
 
-echo '[4.1/5] Installing vscode...'
+echo '[4.1/1-] Installing vscode...'
 brew cask install visual-studio-code
 
-echo '[4.1/5] Installing chrome...'
+echo '[4.1/10] Installing chrome...'
 brew cask install google-chrome
+
+echo '[4.2'
 
 echo 'Cleaning brew...'
 brew cleanup

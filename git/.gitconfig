@@ -1,0 +1,11 @@
+[user]
+  name = René Monroy
+  email = rene.dev.js@email.com
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
