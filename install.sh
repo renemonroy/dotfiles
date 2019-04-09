@@ -17,10 +17,17 @@ ln -sf $DOTFILES_PATH/git/.gitignore_global ~/.gitignore_global
 
 echo '[3/10] Installing zsh...'
 brew install zsh
+curl -sL git.io/antibody | sh -s
+ln -sf $DOTFILES_PATH/zsh/.zshrc ~/.zshrc
 grep -q -f $(which zsh) /etc/shells || echo $(which zsh) | sudo tee -a /etc/shells
 chsh -s $(which zsh)
 
-echo '[4/10] Installing node'
+echo '[4/10] Installing node with nvm...'
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install node
 
 echo '[3/10] Installing silver searcher (ag)...'
 brew install the_silver_searcher
