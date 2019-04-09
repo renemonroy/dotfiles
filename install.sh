@@ -37,6 +37,8 @@ brew install fzy
 
 echo '[4.1/10] Installing hyper...'
 brew cask install hyper
+rm -rf ~/.hyper.js
+ln -sf $DOTFILES_PATH/hyper/.hyper.js ~/.hyper.js
 
 echo '[4.1/1-] Installing vscode...'
 brew cask install visual-studio-code
