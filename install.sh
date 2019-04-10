@@ -67,6 +67,7 @@ brew cask install google-chrome
 
 echo '[10/10] Setting up system configurations...'
 brew cleanup
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.apple.dock autohide -bool true
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
