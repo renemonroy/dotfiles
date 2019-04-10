@@ -29,13 +29,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install node
 
-echo '[3/10] Installing silver searcher (ag)...'
+echo '[5/10] Installing silver searcher (ag)...'
 brew install the_silver_searcher
 
-echo '[4/10] Installing fzy...'
+echo '[6/10] Installing fzy...'
 brew install fzy
 
-echo '[4.1/10] Installing hyper...'
+echo '[7/10] Installing hyper...'
 brew cask install hyper
 rm -rf ~/.hyper.js
 ln -sf $DOTFILES_PATH/hyper/.hyper.js ~/.hyper.js
@@ -45,18 +45,28 @@ cd ~/Development/fonts
 cd ..
 rm -rf ./fonts
 
-echo '[4.1/1-] Installing vscode...'
+echo '[8/10] Installing vscode and some extensions...'
 brew cask install visual-studio-code
+VSCODE_EXTENSIONS=(
+  dbaeumer.vscode-eslint
+  file-icons.file-icons
+  yzhang.markdown-all-in-one
+  christian-kohler.npm-intellisense
+  christian-kohler.path-intellisense
+  esbenp.prettier-vscode
+  naumovs.theme-oceanicnext
+  wayou.vscode-todo-highlight
+  jpoissonnier.vscode-styled-components
+)
+for VSCODE_EXT in "${VSCODE_EXTENSIONS[@]}"
+  do code --install-extension $VSCODE_EXT
+done
 
-echo '[4.1/10] Installing chrome...'
+echo '[9/10] Installing chrome...'
 brew cask install google-chrome
 
-echo '[4.2'
-
-echo 'Cleaning brew...'
+echo '[10/10] Setting up system configurations...'
 brew cleanup
-
-echo '[5/5] Setting up system configurations...'
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.apple.dock autohide -bool true
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
