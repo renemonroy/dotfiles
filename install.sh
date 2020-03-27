@@ -17,7 +17,8 @@ ln -sf $DOTFILES_PATH/git/.gitignore_global ~/.gitignore_global
 
 echo '[3/11] Installing zsh...'
 brew install zsh
-curl -sL git.io/antibody | sh -s
+# curl -sL git.io/antibody | sh -s
+brew install getantibody/tap/antibody
 ln -sf $DOTFILES_PATH/zsh/.zshrc ~/.zshrc
 grep -q -f $(which zsh) /etc/shells || echo $(which zsh) | sudo tee -a /etc/shells
 chsh -s $(which zsh)
