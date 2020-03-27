@@ -15,6 +15,8 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
+ZSH_DISABLE_COMPFIX="true"
+
 # Options
 setopt auto_cd # cd by typing directory name if it's not a command
 setopt auto_list # automatically list choices on ambiguous completion
@@ -40,7 +42,7 @@ antibody bundle zdharma/fast-syntax-highlighting
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-history-substring-search
 antibody bundle zsh-users/zsh-completions
-antibody bundle marzocchi/zsh-notify
+# antibody bundle marzocchi/zsh-notify
 antibody bundle buonomo/yarn-completion
 
 # Theme
